@@ -1,7 +1,7 @@
 import { receiveUsers } from './users'
 import { receiveQuestions } from './questions'
 import { getInitialData } from '../utils/api';
-import { setAuthedUser } from './authedUser';
+import { loadingDone } from './loading';
 
 export function handleInitialData() {
     return (dispatch) => {
@@ -9,7 +9,7 @@ export function handleInitialData() {
         .then( ({users, questions}) => {
             dispatch(receiveUsers(users))
             dispatch(receiveQuestions(questions))
-            dispatch(setAuthedUser(null)) // reset authed user
+            dispatch(loadingDone())
         })
     }
 }

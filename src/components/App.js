@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 import { handleInitialData } from '../actions/shared';
+import LoginForm from './LoginForm';
 
 class App extends Component {
 
@@ -10,17 +11,25 @@ class App extends Component {
     }
 
     render() {
-        return (
+        const { loading } = this.props;
+        
+        if (loading === true) {
+            return (<div>loading...</div>)
+        }
+
+        return (            
             <div className="App">
-                App
-      </div>
+                {this.props.authedUserId == null
+                ? <LoginForm />
+                : <div>The app</div>}
+            </div>
         );
     }
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ loading }) {
     return {
-        loading: authedUser === null
+        loading,
     }
 
 }
