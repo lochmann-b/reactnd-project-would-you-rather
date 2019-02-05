@@ -1,8 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import LoadingBar from 'react-redux-loading'
 
 import { handleInitialData } from '../actions/shared';
+import NavBar from './NavBar'
 import LoginForm from './LoginForm';
+import Dashboard from './Dashboard'
+import AddQuestion from './AddQuestion'
+import LeadBoard from './LeadBoard'
+
 
 class App extends Component {
 
@@ -11,25 +18,35 @@ class App extends Component {
     }
 
     render() {
-        const { loading } = this.props;
-        
-        if (loading === true) {
-            return (<div>loading...</div>)
-        }
+        const { loading, authedUser } = this.props;
+        return (
+            <Router>
+                <Fragment>
+                    <div className='container'>
+                        <LoadingBar />
+                        <NavBar />
+                        {loading === true
+                            ? null
+                            : (authedUser == null
+                                ? <LoginForm from={this.props.location} />
+                                : <div>
+                                    <Route exact path='/' component={Dashboard} />
+                                    <Route path='/add' component={AddQuestion} />
+                                    <Route path='/leadBoard' component={LeadBoard} />
+                                </div>)
+                        }
 
-        return (            
-            <div className="App">
-                {this.props.authedUserId == null
-                ? <LoginForm />
-                : <div>The app</div>}
-            </div>
+                    </div>
+                </Fragment>
+            </Router>
         );
     }
 }
 
-function mapStateToProps({ loading }) {
+function mapStateToProps({ loading, authedUser }) {
     return {
         loading,
+        authedUser
     }
 
 }
