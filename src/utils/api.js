@@ -1,6 +1,7 @@
 import {
     _getQuestions,
-    _getUsers
+    _getUsers,
+    _saveQuestionAnswer
 } from './_DATA'
 
 export function getInitialData() {
@@ -11,4 +12,12 @@ export function getInitialData() {
         users,
         questions
     }))
+}
+
+export function saveQuestionAnswer(qid, answer, authedUser) {
+    return _saveQuestionAnswer({
+        authedUser,
+        qid,
+        answer
+    })
 }
