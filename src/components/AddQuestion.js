@@ -29,7 +29,7 @@ class AddQuestion extends Component {
     }
 
     render() {
-        const { optionOne, optionTwo } = this.state
+        const { optionOneText, optionTwoText } = this.state
         return (
             <div className='add-question'>
                 <h3>Add a question</h3>
@@ -37,15 +37,15 @@ class AddQuestion extends Component {
                     <label>
                         Would you rather
                         <br />
-                        <input placeholder='Enter option one' name='optionOneText' value={optionOne} onChange={this.handleOptionChanged} type="text" />
+                        <input placeholder='Enter option one' name='optionOneText' value={optionOneText} onChange={this.handleOptionChanged} type="text" />
                     </label>
                     <br />
                     <label>                        
                         or would you rather<br />
-                        <input placeholder='Enter option two' name='optionTwoText' value={optionTwo} onChange={this.handleOptionChanged} type="text" />
+                        <input placeholder='Enter option two' name='optionTwoText' value={optionTwoText} onChange={this.handleOptionChanged} type="text" />
                     </label>
                     <br />
-                    <button className="btn" type="submit" disabled={optionOne === '' || optionTwo === ''}>
+                    <button className="btn" type="submit" disabled={optionOneText.trim() === '' || optionTwoText.trim() === ''}>
                         Submit
                     </button>
                 </form>
