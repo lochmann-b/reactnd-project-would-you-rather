@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Answer from './Answer';
 import { connect } from 'react-redux'
 import { handleSaveAnswer } from '../actions/questions'
+import Component404 from './Component404';
 
 
 /*
@@ -114,7 +115,7 @@ class Question extends Component {
         const { question,  authedUser } = this.props
 
         if (!question) {
-            return (<div>This question doesn't exist</div>)
+            return <Component404 question={true}/>
         }
         const didVoteForOptionOne = question.optionOne.votes.includes(authedUser);
         const didVoteForOptionTwo = question.optionTwo.votes.includes(authedUser)

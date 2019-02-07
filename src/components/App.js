@@ -10,6 +10,7 @@ import Dashboard from './Dashboard'
 import AddQuestion from './AddQuestion'
 import LeadBoard from './LeadBoard'
 import Question from './Question'
+import Component404 from './Component404';
 
 
 class App extends Component {
@@ -36,7 +37,7 @@ class App extends Component {
                                         <Route path='/add' component={AddQuestion} />
                                         <Route path='/leadBoard' component={LeadBoard} />
                                         <Route path='/questions/:id' component={Question} />
-                                        <Route render={() => (<div><h1>404</h1><p>This is a very basic 404 page. Better designs could be found here:<br /><a href='https://www.crazyegg.com/blog/404-page-web-design/'>How To Design a 404 Page That Keeps Visitors On Your Site.</a></p><p><Link to='/'>Go home</Link></p></div>)} />
+                                        <Route component={Component404} />
                                     </Switch>
                                 </div>)
                         }

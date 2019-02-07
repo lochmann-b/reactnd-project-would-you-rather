@@ -138,7 +138,7 @@ li {
   
 }
 
-.questions {
+.questions, .not-found {
   width: 100%;
   max-width: 610px;
   padding: 0px 10px;
@@ -178,6 +178,10 @@ li {
   font-size: 18px;
   display: flex;
   align-items: center;
+}
+
+.not-found a {
+  text-decoration: underline;
 }
 
 .votes {
