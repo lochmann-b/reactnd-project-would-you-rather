@@ -24,88 +24,108 @@ class Question extends Component {
         dispatch(handleSaveAnswer(question.id, selectedOptoin))
     }
 
+
+    unansweredQuestion = () => {
+        const { question, author } = this.props
+        const { optionOne, optionTwo } = question
+        const { avatarURL, name } = author
+        const { selectedOptoin } = this.state
+
+        return (
+            <div className='question'>
+                <img
+                    src={avatarURL}
+                    alt={`Avatar of ${name}`}
+                    className='avatar'
+                />
+
+                <div className='question-details'>
+                    <h3>{`${name} asks:`}</h3>
+                    <strong>Would you rather</strong>
+                    <form className="form-question" onSubmit={this.handleSubmit}>
+                        <label>
+                            <input
+                                type="radio"
+                                value="optionOne"
+                                checked={selectedOptoin === 'optionOne'}
+                                className="form-question-radiobutton"
+                                onChange={this.handleOptionSelected}
+                            />
+                            {optionOne.text}
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                value="optionTwo"
+                                checked={selectedOptoin === 'optionTwo'}
+                                className="form-question-radiobutton"
+                                onChange={this.handleOptionSelected}
+                            />
+                            {optionTwo.text}
+                        </label>
+                        <button className="btn" type="submit" disabled={selectedOptoin === null}>
+                            Answer
+                            </button>
+                    </form>
+                </div>
+            </div>
+        )
+    }
+
+    answeredQuestion = (didVoteForOptionOne, didVoteForOptionTwo) => {
+        const { question, author } = this.props
+        const { optionOne, optionTwo } = question
+        const { avatarURL, name } = author
+        const votesOptionOne = optionOne.votes.length
+        const votesOptionTwo = optionTwo.votes.length
+        const totalVotes = votesOptionOne + votesOptionTwo
+        return (
+            <div className='question'>
+                <img
+                    src={avatarURL}
+                    alt={`Avatar of ${name}`}
+                    className='avatar'
+                />
+                <div className='question-details'>
+                    <h3>{`${name} asked:`}</h3>
+                    <strong>Would you rather</strong>                    
+                    <Answer
+                        question={optionOne.text}
+                        votes={votesOptionOne}
+                        totalVotes={totalVotes}
+                        selected={didVoteForOptionOne}
+                    />
+                    <Answer
+                        question={optionTwo.text}
+                        votes={votesOptionTwo}
+                        totalVotes={totalVotes}
+                        selected={didVoteForOptionTwo}
+                    />
+                </div>
+            </div>
+        )
+    }
+
     render() {
-        const { question, author, authedUser } = this.props
+        const { question,  authedUser } = this.props
 
         if (!question) {
             return (<div>This question doesn't exist</div>)
         }
 
         const { optionOne, optionTwo } = question
-        const { avatar, name } = author
         const didVoteForOptionOne = question.optionOne.votes.includes(authedUser);
         const didVoteForOptionTwo = question.optionTwo.votes.includes(authedUser)
 
         if (didVoteForOptionOne || didVoteForOptionTwo) {
-            const votesOptionOne = question.optionOne.votes.length
-            const votesOptionTwo = question.optionTwo.votes.length
-            const totalVotes = votesOptionOne + votesOptionTwo
-            return (<div>
-                <Answer
-                    question={optionOne.text}
-                    votes={votesOptionOne}
-                    totalVotes={totalVotes}
-                    selected={didVoteForOptionOne}
-                />
-                <Answer
-                    question={optionTwo.text}
-                    votes={votesOptionTwo}
-                    totalVotes={totalVotes}
-                    selected={didVoteForOptionTwo}
-                />
-            </div>)
-
+            return this.answeredQuestion(didVoteForOptionOne, didVoteForOptionTwo)
         }
 
-
-        const { selectedOptoin } = this.state
-
-        return (
-            <div>
-                <img
-                    src={avatar}
-                    alt={`Avatar of ${name}`}
-                    className='avatar'
-                />
-
-                <div className='question'>
-                    <h3>Would you rather</h3>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="form-question">
-                            <label>
-                                <input
-                                    type="radio"
-                                    value="optionOne"
-                                    checked={selectedOptoin === 'optionOne'}
-                                    className="form-question-radiobutton"
-                                    onChange={this.handleOptionSelected}
-                                />
-                                {optionOne.text}
-                            </label>
-                            <label>
-                                <input
-                                    type="radio"
-                                    value="optionTwo"
-                                    checked={selectedOptoin === 'optionTwo'}
-                                    className="form-question-radiobutton"
-                                    onChange={this.handleOptionSelected}
-                                />
-                                {optionTwo.text}
-                            </label>
-                        </div>
-                        <div className="form-group">
-                            <button className="form-question-submit" type="submit" disabled={selectedOptoin === null}>
-                                Answer
-                            </button>
-                        </div>
-
-                    </form>
-                </div>
-
-            </div>
-        );
+        return this.unansweredQuestion()
     }
 }
+
+
 
 function mapStateToProps({ users, authedUser, questions }, props) {
     const { id } = props.match.params

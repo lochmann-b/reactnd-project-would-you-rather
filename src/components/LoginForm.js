@@ -25,16 +25,21 @@ class LoginForm extends Component {
 
     render() {
         const { users } = this.props
-        
+
         return (
-            <div>
-                <h3>Login</h3>
-                <form className='login' onSubmit={this.handleSubmit}>
-                    <select value={this.state.selectedUser} onChange={this.handleUserChanged}>
-                        <option key='' value=''>Select User</option>
-                        {Object.keys(users).map(userId => (<option key={userId} value={userId}>{users[userId].name}</option>))}
-                    </select>
-                    <button className='btn' type='submit' disabled={this.state.selectedUser === ''}>Login</button>
+            <div className='login'>
+                <h3 className='center'>We'd like to know who you are</h3>
+                <form className='center' onSubmit={this.handleSubmit}>
+                    <label>
+                        {`Today, i'd like to be: `}
+                        <select value={this.state.selectedUser} onChange={this.handleUserChanged}>
+                            <option key='' value=''>Select User</option>
+                            {Object.keys(users).map(userId => (<option key={userId} value={userId}>{users[userId].name}</option>))}
+                        </select>
+                    </label>
+                    <p>
+                        <button className='btn' type='submit' disabled={this.state.selectedUser === ''}>Login</button>
+                    </p>
                 </form>
             </div>
         );

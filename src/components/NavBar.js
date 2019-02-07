@@ -30,13 +30,15 @@ class NavBar extends Component {
                             Lead Board
                         </NavLink>
                     </li>
-                    {user && (
-                        <li>
-                            {`Hi, ${user.name}`}
-                            <button onClick={this.handleLogout}>Logout</button>
-                        </li>
-                    )}
                 </ul>
+
+                {user && (
+                    <p className='greeter'>
+                        {`Hi, ${user.name}`}
+                        <button className='btn' onClick={this.handleLogout}>Logout</button>
+                    </p>
+                )}
+
             </nav>
         );
     }

@@ -1,8 +1,8 @@
 let users = {
   sarahedo: {
-    id: 'sarahedo',
-    name: 'Sarah Edo',
-    avatarURL: '',
+    id: 'karinhoeller',
+    name: 'Karin Hoeller',
+    avatarURL: 'https://www.steinackerhof.it/wp-content/uploads/2018/11/hausLageGross.jpg',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -12,9 +12,9 @@ let users = {
     questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
   },
   tylermcginnis: {
-    id: 'tylermcginnis',
-    name: 'Tyler McGinnis',
-    avatarURL: '',
+    id: 'laurinlochmann',
+    name: 'Laurin Lochmann',
+    avatarURL: 'https://www.steinackerhof.it/wp-content/uploads/2018/11/maultaschGross.jpg',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -22,16 +22,25 @@ let users = {
     questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
   },
   johndoe: {
-    id: 'johndoe',
-    name: 'John Doe',
-    avatarURL: '' ,
+    id: 'julialochmann',
+    name: 'Julia Lochmann',
+    avatarURL: 'https://www.steinackerhof.it/wp-content/uploads/2018/11/tischGross.jpg' ,
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo'
     },
     questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
+  },
+  benjaminlochmann: {
+    id: 'benjaminlochmann',
+    name: 'Benjamin Lochmann',
+    avatarURL: 'https://www.steinackerhof.it/wp-content/uploads/2019/02/benjamin-lochmann.jpg' ,
+    answers: {    
+    },
+    questions: [],    
   }
+
 }
 
 let questions = {

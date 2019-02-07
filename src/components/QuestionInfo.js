@@ -13,21 +13,21 @@ class QuestionInfo extends Component {
         }
 
         const { optionOne } = question
-        const { avatar, name } = author
+        const { avatarURL, name } = author
+
         return (
-            <div>
-                <h3>{`${name} asks:`}</h3>
+            <Link className='question' to={`/questions/${question.id}`}>
                 <img
-                    src={avatar}
+                    src={avatarURL}
                     alt={`Avatar of ${name}`}
                     className='avatar'
                 />
-                <h4>Would you rather</h4>
-                <div className='question'>
-                    {`${optionOne.text}...`}
+                <div className='question-details'>
+                    <h3>{`${name} asks:`}</h3>
+                    <strong>Would you rather...</strong>
+                    <p>{`...${optionOne.text}...`}</p>
                 </div>
-                <Link to={`/questions/${question.id}`} >Go to poll</Link>
-            </div>
+            </Link>
         );
     }
 }

@@ -18,22 +18,28 @@ class AddQuestion extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         const { dispatch, history } = this.props
-        const { optionOneText, optionTwoText} = this.state
+        const { optionOneText, optionTwoText } = this.state
         dispatch(handleAddQuestion(optionOneText, optionTwoText))
         history.push('/')
 
     }
 
     render() {
-        const { optionOne, optionTwo} = this.state
+        const { optionOne, optionTwo } = this.state
         return (
-            <div>
+            <div className='add-question'>
                 <h3>Add a question</h3>
                 <form onSubmit={this.handleSubmit}>
-                    Would you rather
-                    <input name='optionOneText' value={optionOne} onChange={this.handleOptionChanged} type="text" />
-                    Or
-                    <input name='optionTwoText' value={optionTwo} onChange={this.handleOptionChanged} type="text" />
+                    <label>
+                        Would you rather
+                        <br />
+                        <input placeholder='Enter option one' name='optionOneText' value={optionOne} onChange={this.handleOptionChanged} type="text" />
+                    </label>
+                    <br />
+                    <label>                        
+                        or would you rather<br />
+                        <input placeholder='Enter option two' name='optionTwoText' value={optionTwo} onChange={this.handleOptionChanged} type="text" />
+                    </label>
                     <br />
                     <button className="btn" type="submit" disabled={optionOne === '' || optionTwo === ''}>
                         Submit

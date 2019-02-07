@@ -6,11 +6,11 @@ class LeadBoard extends Component {
     render() {
         const { userInfo } = this.props
         return (
-            <div>
+            <div className='leadboard'>
                 <ul>
                     {userInfo.map(u => (
                         <li key={u.id}>
-                           <User userInfo={u}/>
+                            <User userInfo={u} />
                         </li>
                     ))}
                 </ul>
@@ -22,11 +22,13 @@ class LeadBoard extends Component {
 function mapStateToProps({ users }) {
     return {
         userInfo: Object.values(users)
-            .map(user => {
+            .sort((a, b) => (Object.keys(b.answers).length + b.questions.length) - (Object.keys(a.answers).length + a.questions.length))
+            .map((user, index) => {
                 return {
                     id: user.id,
+                    ranking: (index + 1),
                     name: user.name,
-                    avatarURL: user.name.avatarURL,
+                    avatarURL: user.avatarURL,
                     answers: Object.keys(user.answers).length,
                     questions: user.questions.length
                 }

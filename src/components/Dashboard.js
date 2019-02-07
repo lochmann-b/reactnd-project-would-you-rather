@@ -15,12 +15,13 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <div>
-                <div className="buttonGroup">
-                    <button value='unanswered' onClick={this.handleShowAnswered} disabled={this.state.unanswered}>Unanswered</button>
-                    <button value='answered' onClick={this.handleShowAnswered} disabled={!this.state.unanswered}>Answered</button>
-                </div>
-                <Questions unanswered={this.state.unanswered}/>
+
+            <div className="questions">
+
+                <button className='filter-button' value='unanswered' onClick={this.handleShowAnswered} disabled={this.state.unanswered}>Unanswered</button>
+                <button className='filter-button' value='answered' onClick={this.handleShowAnswered} disabled={!this.state.unanswered}>Answered</button>
+
+                <Questions unanswered={this.state.unanswered} />
             </div>
         );
     }
