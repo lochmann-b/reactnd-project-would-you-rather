@@ -1,7 +1,12 @@
-/* Shows author and option a. Links to actual question component*/
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+
+/*
+*  Renders the author and the first option of the question.
+*  Links to actual question component where the question can be answered/viewed
+*/
 
 class QuestionInfo extends Component {
 
@@ -32,13 +37,17 @@ class QuestionInfo extends Component {
     }
 }
 
-function mapStateToProps({ users, authedUser, questions }, { id }) {
+function mapStateToProps({ users, questions }, { id }) {
     const question = questions[id]
     const author = question ? users[question.author] : null
     return {
         question: question,
         author: author
     }
+}
+
+QuestionInfo.propTypes = {
+    id: PropTypes.string.isRequired
 }
 
 export default connect(mapStateToProps)(QuestionInfo); 

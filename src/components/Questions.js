@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import QuestionInfo from './QuestionInfo'
+
+/*
+* Renders a list of questions.
+*/
 
 class Questions extends Component {
   
@@ -28,6 +33,10 @@ function mapStateToProps({ questions, authedUser, users }, { unanswered }) {
             .filter(questionId => unanswered ? !answeredQuestions.has(questionId) : answeredQuestions.has(questionId))
             .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
     }
+}
+
+Questions.propTypes = {
+    unanswered: PropTypes.bool.isRequired
 }
 
 export default connect(mapStateToProps)(Questions);

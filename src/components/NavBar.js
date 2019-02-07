@@ -4,6 +4,10 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
 
+/*
+ * Provides the navigation bar 
+ */
+
 class NavBar extends Component {
 
     handleLogout = () => {

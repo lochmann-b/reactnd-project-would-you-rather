@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import User from './User'
 
+/*
+*  Renders the leadboard. Users sorted by score
+*/
+
 class LeadBoard extends Component {
     render() {
         const { userInfo } = this.props

@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions';
 
+/*
+* Compnent that allows the user to add a new questin
+*/
+
 class AddQuestion extends Component {
 
     state = {

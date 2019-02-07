@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 import { setAuthedUser } from '../actions/authedUser'
 import { withRouter } from 'react-router-dom'
 
+/*
+ * Provides the login form
+ */
+
 class LoginForm extends Component {
 
     state = {

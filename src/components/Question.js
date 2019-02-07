@@ -4,7 +4,11 @@ import { connect } from 'react-redux'
 import { handleSaveAnswer } from '../actions/questions'
 
 
-
+/*
+*  Renders a question.
+*  If the authed user has already answered the question, some stats will be shown.
+*  Otherwise, the question can be answered.
+*/
 class Question extends Component {
 
     state = {
@@ -112,8 +116,6 @@ class Question extends Component {
         if (!question) {
             return (<div>This question doesn't exist</div>)
         }
-
-        const { optionOne, optionTwo } = question
         const didVoteForOptionOne = question.optionOne.votes.includes(authedUser);
         const didVoteForOptionTwo = question.optionTwo.votes.includes(authedUser)
 
