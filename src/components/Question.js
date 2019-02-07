@@ -46,7 +46,7 @@ class Question extends Component {
 
                 <div className='question-details'>
                     <h3>{`${name} asks:`}</h3>
-                    <strong>Would you rather</strong>
+                    <strong>Would You Rather</strong>
                     <form className="form-question" onSubmit={this.handleSubmit}>
                         <label>
                             <input

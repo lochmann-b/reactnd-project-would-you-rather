@@ -35,13 +35,13 @@ class AddQuestion extends Component {
                 <h3>Add a question</h3>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Would you rather
+                        Would You Rather
                         <br />
                         <input placeholder='Enter option one' name='optionOneText' value={optionOneText} onChange={this.handleOptionChanged} type="text" />
                     </label>
                     <br />
                     <label>                        
-                        or would you rather<br />
+                        Or Would You Rather<br />
                         <input placeholder='Enter option two' name='optionTwoText' value={optionTwoText} onChange={this.handleOptionChanged} type="text" />
                     </label>
                     <br />
