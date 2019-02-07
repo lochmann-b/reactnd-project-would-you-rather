@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Answer from './Answer';
-
 import { connect } from 'react-redux'
-
 import { handleSaveAnswer } from '../actions/questions'
 
 

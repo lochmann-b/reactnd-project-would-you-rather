@@ -17,10 +17,10 @@ class AddQuestion extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        const { dispatch } = this.props
+        const { dispatch, history } = this.props
         const { optionOneText, optionTwoText} = this.state
         dispatch(handleAddQuestion(optionOneText, optionTwoText))
-        this.props.history.push('/')
+        history.push('/')
 
     }
 
